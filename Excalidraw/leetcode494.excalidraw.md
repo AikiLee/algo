@@ -1,0 +1,86 @@
+---
+
+excalidraw-plugin: parsed
+tags: [excalidraw]
+
+---
+==⚠  Switch to EXCALIDRAW VIEW in the MORE OPTIONS menu of this document. ⚠== You can decompress Drawing data with the command palette: 'Decompress current Excalidraw file'. For more info check in plugin settings under 'Saving'
+
+
+# Excalidraw Data
+
+## Text Elements
+1. 回溯进阶：
+
+根据加法公式发现参数之间的关系，将纯回溯问题转化为背包问题
+通过基本运算可以发现如下规律：
+设正数项个数为p，负数项个数为q，全为正时数组和为s，有
+p + q = s
+p - q = target
+p = (s+target) / 2
+q = (s-target) / 2
+所以我们可以令：c = (s-|target|) / 2
+这样就产生了一个01背包问题后面按套路来写就行了
+
+2. 1：1翻译为递推：
+
+前面的回溯代码在舍弃return之后，可以直接翻译成递推，例如：
+
+dfs(i-1,c) + dfs(i-1,c-nums[i]) =>
+for(let i = 0 ; i<= n ; i++ ){
+     for(let c = i; c <= capacity; j++ {
+        if(...) f[i+1][c] = f[i][c];
+        else f[i+1][c] = f[i][c-nums[i]] //选；当然还有各种变式
+    } 
+}
+
+3. 进一步优化，转换为一维数组：
+通过观察上面的递推式，我们发现对i所做的事情完全相同，
+完全可以将其放在循环中处理，进一步降低空间复杂度：
+但是这里有一个计算结果被覆盖的问题，可以通过反向计算来规避
+
+//m为背包容量
+const f = new Array(m+1).fill(0);
+f[0] = 1;
+for (let x of nums) {
+    for (let c = m; c >= x; c--) {
+        f[c] += f[c - x];
+    }
+}
+
+ ^wCOOIk5m
+
+%%
+## Drawing
+```compressed-json
+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
+```
+%%
