@@ -13,34 +13,31 @@
  *          heapifyDown();
  * 2. next: integrated small heap
  */
-class Heap<T> {
-    heap: T[];
-    private length: number;
-
-    constructor(arr?: T[]) {
+class Heap {
+    constructor(arr) {
         if (!arr) {
             this.heap = [];
             this.length = 0;
-        } else {
+        }
+        else {
             this.heap = arr;
             this.length = arr.length;
             this.buildHeap(arr);
         }
     }
     //ts 没有重写吗
-
-    /* 
+    /*
         步骤：
         1:init the heap，offer basic method:
         constructor() use array to contain heap, index from 0;
         swap() exchange two element;
-        size() return number of elements in the heap; 
+        size() return number of elements in the heap;
 
         peek() reurn the top element in the heap;
 
         isEmpty() return true if the heap is empty;
 
-        2: 
+        2:
         insert() add an element at the end of the heap,then heapify_up();
 
         heapify_up() renew from bottom to top;
@@ -53,37 +50,32 @@ class Heap<T> {
     
     
     */
-
     /**
      *
      * @param i  position of the element A
      * @param j position of the element B
      * exchange position of A  and B
      */
-    private swap(i: number, j: number): void {
+    swap(i, j) {
         [this.heap[i], this.heap[j]] = [this.heap[j], this.heap[i]];
     }
-
     /**
      *
      * @returns return the number of elements in the heap
      */
-    size(): number {
+    size() {
         return this.length;
     }
-
     /**
      *
      * @returns return the top element of the heap
      */
-    peek(): T | undefined {
-        return this.heap[0] ? (this.heap[0] as T) : undefined;
+    peek() {
+        return this.heap[0] ? this.heap[0] : undefined;
     }
-
-    isEmpty(): boolean {
+    isEmpty() {
         return this.length === 0;
     }
-
     /**
      *
      * @param index current element's index in the heap array
@@ -91,10 +83,11 @@ class Heap<T> {
      * 1. Compare the element with its parent, if it is the bigger one ,swap() them
      * 2. length++, index = parentIndex
      */
-    private heapifyUp(): void {
-        let index: number = this.length - 1;
+    heapifyUp() {
+        let index = this.length - 1;
         // heap is not empty
-        if (this.isEmpty()) return;
+        if (this.isEmpty())
+            return;
         let parentIndex = Math.floor((index - 1) / 2);
         while (index > 0) {
             if (this.heap[index] <= this.heap[parentIndex]) {
@@ -105,14 +98,13 @@ class Heap<T> {
             index = parentIndex;
         }
     }
-
     /**
      *
      * @param value
      * @description insert value at the botom the heap, then this.length++,
      * last heapifyUp()
      */
-    insert(value: T) {
+    insert(value) {
         this.heap.push(value);
         this.length++;
         this.heapifyUp();
@@ -130,13 +122,12 @@ class Heap<T> {
     //         return value;
     //     }
     // }
-
     /**
      *
      * @returns return the top element
      * @description judge the length, if there's no element return undefined, if one element
      */
-    extract(): T | undefined {
+    extract() {
         if (this.length === 0) {
             return undefined;
         }
@@ -152,7 +143,6 @@ class Heap<T> {
         this.heapifyDown(0);
         return topVal;
     }
-
     /**
      * @description from top to bottom, adjust the heap
      * to main a big root heap:
@@ -162,7 +152,7 @@ class Heap<T> {
      *  4. renew index
      *
      */
-    private heapifyDown(index: number) {
+    heapifyDown(index) {
         while (2 * index + 1 < this.length) {
             let leftChildIndex = 2 * index + 1;
             let rightChildIndex = 2 * index + 2;
@@ -186,7 +176,7 @@ class Heap<T> {
      * 1. read array
      * 2. then heapifyUp
      */
-    buildHeap(arr: T[]): void {
+    buildHeap(arr) {
         this.heap = arr;
         let start = Math.floor((this.length - 1) / 2);
         for (let i = start; i >= 0; i--) {
@@ -194,7 +184,6 @@ class Heap<T> {
         }
     }
 }
-
 // const heap = new Heap();
 // heap.insert(10);
 // heap.insert(20);
@@ -202,7 +191,7 @@ class Heap<T> {
 // heap.insert(5);
 // heap.extract();
 // console.log(heap.size()); //expected 3
-
 const arr = [10, 20, 30, 5];
 const heap = new Heap(arr);
 console.log(heap.size());
+//# sourceMappingURL=heap.js.map

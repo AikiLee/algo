@@ -169,6 +169,11 @@
   },
   "active": "eeb659f14c1f0ab3",
   "lastOpenFiles": [
+    "out/heap.js.map",
+    "out/heap.js",
+    "out",
+    "tsconfig.json",
+    "tech/heap.js",
     "1.doublePointer/4.快慢指针.md",
     "1.doublePointer/3.反转链表.md",
     "1.doublePointer/2.滑动窗口.md",
@@ -191,20 +196,15 @@
     "string/1.字符串截取.md",
     "string",
     "summary/1.及时回顾：每天晚上或者第二天早晨重复刷之前写过的题目.md",
-    "summary",
-    "tech/heap.ts",
     "tech/3.Heap.md",
     "tech/2.单调栈，队列.md",
     "tech/1.前缀和.md",
-    "tech",
-    "技巧/heap.ts",
     "linter.md",
     "技巧/3.Heap.md",
     "2.二叉树/1.构建树.md",
     "4.动态规划/2.背包问题.md",
     "4.动态规划/1.递推.md",
     "4.动态规划/3.线性dp.md",
-    "2.二叉树/4.树.md",
     "Untitled.canvas"
   ]
 }
